@@ -23,7 +23,7 @@ const Page = () => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    alert(values);
+    alert(JSON.stringify(values));
   }
 
   const form = useForm<z.infer<typeof formSchema>>({
