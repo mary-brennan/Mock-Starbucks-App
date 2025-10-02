@@ -25,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${lato.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${lato.variable} antialiased md:overflow-x-hidden`}
+      >
         <Navbar />
         {children}
       </body>

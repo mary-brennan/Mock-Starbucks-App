@@ -13,7 +13,7 @@ const Navbar = () => {
   const isAuthPage = pathname.includes("/account");
 
   return (
-    <div className=" relative flex justify-between items-center text-black bg-gray-50 px-10 py-5 my-1 shadow-md/20">
+    <div className="  relative flex justify-between items-center text-black bg-gray-50 px-10 py-5 my-1 shadow-md/20">
       <div className="flex gap-5 ">
         {/* left container */}
 
@@ -45,12 +45,19 @@ const Navbar = () => {
             <button className="">Find a Store</button>
           </div>
           <div className="flex gap-3">
-            <button className="px-3 py-1 border-black border-1 rounded-2xl">
-              Login
-            </button>
-            <button className="px-3 border-1  bg-black text-white rounded-2xl py-1">
-              Join now
-            </button>
+            <Button
+              variant="outline"
+              asChild
+              className="px-3 py-2 border-black border-1 rounded-2xl font-semibold"
+            >
+              <Link href="/account/signin">Login</Link>
+            </Button>
+            <Button
+              asChild
+              className="px-3 border-1  bg-black text-white rounded-2xl py-2"
+            >
+              <Link href="account/create">Join now</Link>
+            </Button>
           </div>
         </div>
       )}

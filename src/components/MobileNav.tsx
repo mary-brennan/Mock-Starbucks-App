@@ -6,14 +6,15 @@ const MobileNav = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
+    <div className="">
       <div className="text-black lg:hidden flex">
         <button onClick={() => setOpen(!open)} className="cursor-pointer">
           {open ? <X /> : <Menu />}
         </button>
       </div>
+
       <div
-        className={`lg:hidden absolute top-full right-0 w-3/4 h-[90vh] bg-white shadow-lg z-50 p-5 transition-transform duration-300 ease-in-out ${
+        className={`lg:hidden  absolute top-full right-0 w-3/4 h-[90vh] bg-white shadow-lg z-50 p-5 transition-transform duration-300 ease-in-out ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -45,7 +46,7 @@ const MobileNav = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

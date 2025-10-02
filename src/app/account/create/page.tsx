@@ -46,7 +46,7 @@ const Page = () => {
         </p>
       </div>
 
-      <div className="self-center w-full md:w-2/3  xl:w-1/3 p-14 rounded-2xl shadow-[0_1px_10px_0_#0000001a,0_4px_5px_0_#0000000f,0_2px_4px_0_#00000012] ">
+      <div className="self-center w-full md:w-2/3  xl:w-1/3 p-14 rounded-2xl md:shadow-[0_1px_10px_0_#0000001a,0_4px_5px_0_#0000000f,0_2px_4px_0_#00000012] ">
         <p className="">
           <span className="text-green-700">* </span>indicates required field
         </p>
@@ -58,13 +58,10 @@ const Page = () => {
               name="firstName"
               render={({ field }) => (
                 <FormItem className="pt-4">
-                  <FormLabel>
-                    <span className="text-green-600">*</span>First Name
-                  </FormLabel>
                   <FormControl>
                     <Input
                       className="bg-color-white"
-                      placeholder="enter first name"
+                      placeholder="* First Name"
                       {...field}
                     />
                   </FormControl>
@@ -76,14 +73,11 @@ const Page = () => {
               control={form.control}
               name="lastName"
               render={({ field }) => (
-                <FormItem className="pt-4">
-                  <FormLabel>
-                    <span className="text-green-600">*</span>Last Name
-                  </FormLabel>
+                <FormItem className="pt-6 pb-8">
                   <FormControl>
                     <Input
                       className="bg-color-white"
-                      placeholder="enter first name"
+                      placeholder="* Last Name"
                       {...field}
                     />
                   </FormControl>
@@ -91,18 +85,16 @@ const Page = () => {
                 </FormItem>
               )}
             />
+            <h1 className="text-xl font-semibold">Account Security</h1>
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem className="pt-4">
-                  <FormLabel>
-                    <span className="text-green-600">*</span>Email
-                  </FormLabel>
                   <FormControl>
                     <Input
                       className="bg-color-white"
-                      placeholder="enter first name"
+                      placeholder="* Email"
                       type="email"
                       {...field}
                     />
@@ -115,14 +107,11 @@ const Page = () => {
               control={form.control}
               name="password"
               render={({ field }) => (
-                <FormItem className="pt-4">
-                  <FormLabel>
-                    <span className="text-green-600">*</span>Password
-                  </FormLabel>
+                <FormItem className="pt-6">
                   <FormControl>
                     <Input
                       className="bg-color-white"
-                      placeholder="enter first name"
+                      placeholder="* Password"
                       type="password"
                       {...field}
                     />
@@ -131,8 +120,11 @@ const Page = () => {
                 </FormItem>
               )}
             />
-            <Button className="mt-4" type="submit">
-              Submit
+            <Button
+              className="mt-4 px-3 py-2 rounded-full bg-green-800"
+              type="submit"
+            >
+              Create Account
             </Button>
           </form>
         </Form>
