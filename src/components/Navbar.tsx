@@ -56,7 +56,7 @@ const Navbar = () => {
               asChild
               className="px-3 border-1  bg-black text-white rounded-2xl py-2"
             >
-              <Link href="account/create">Join now</Link>
+              <Link href="/account/create">Join now</Link>
             </Button>
           </div>
         </div>

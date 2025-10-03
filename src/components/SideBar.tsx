@@ -65,7 +65,7 @@ const SideBar = () => {
           </li>
         </ul>
       </nav>
-      <nav className="mt-4">
+      {/* <nav className="mt-4">
         <span className="font-semibold  text-lg">Food</span>
         <ul className="text-gray-500">
           <li className="my-3 hover:text-black">
@@ -123,7 +123,7 @@ const SideBar = () => {
             </a>
           </li>
         </ul>
-      </nav>
+      </nav> */}
     </div>
   );
 };
