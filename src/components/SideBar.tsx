@@ -1,5 +1,5 @@
 import React from "react";
-
+import Link from "next/link";
 const SideBar = () => {
   return (
     <div className="hidden lg:flex flex-col">
@@ -7,12 +7,12 @@ const SideBar = () => {
         <span className="font-semibold  text-lg">Drinks</span>
         <ul className="text-gray-500">
           <li className="my-3 hover:text-black">
-            <a
-              href="/menu/drinks/protein-beverages"
+            <Link
+              href="/menu/drinks/proteinBev"
               className="flex justify-between"
             >
               Protein Beverages
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
             <a href="/menu/drinks/hot-coffee" className="flex justify-between">
