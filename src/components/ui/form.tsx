@@ -106,6 +106,7 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
 
   return (
     <Slot
+      className=""
       data-slot="form-control"
       id={formItemId}
       aria-describedby={
@@ -126,7 +127,7 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="form-description"
       id={formDescriptionId}
-      className={cn("text-muted-foreground text-sm", className)}
+      className={cn("text-muted-foreground bg-amber-100 ", className)}
       {...props}
     />
   );

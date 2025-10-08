@@ -1,5 +1,6 @@
-import React from "react";
 import { Drinks } from "@/app/_data/Drinks";
+import Image from "next/image";
+import DrinkDiv from "@/components/DrinkDiv";
 const page = async ({
   params,
 }: {
@@ -14,10 +15,9 @@ const page = async ({
   return (
     <div>
       {matchingDrink ? (
-        <div>
-          <h1>{matchingDrink.name}</h1>
-          <img src={matchingDrink.img} alt={matchingDrink.name} />
-        </div>
+        <>
+          <DrinkDiv matchingDrink={matchingDrink} />
+        </>
       ) : (
         <div>Drink not found</div>
       )}
