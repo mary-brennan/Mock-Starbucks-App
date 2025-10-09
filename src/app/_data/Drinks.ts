@@ -26,41 +26,49 @@ export const MainDrinks: MainDrink[] = [
   {
     img: "/CaffeLatte.jpg",
     name: "Hot Coffee",
+    link: "hotCoffee",
     id: 2,
   },
   {
     img: "/VanillaSweetCreamColdBrew.jpg",
     name: "Cold Coffee",
+    link: "ColdCoffe",
     id: 3,
   },
   {
     img: "/HoneyCitrusMintTea.jpg",
     name: "Hot Tea",
+    link: "hotTea",
     id: 4,
   },
   {
     img: "/IcedMatchaTeaLatte.jpg",
     name: "Cold Tea",
+    link: "coldTea",
     id: 5,
   },
   {
     img: "/StrawberryAcaiLemonadeRefreshers.jpg",
     name: "Refreshers",
+    link: "refreshers",
     id: 6,
   },
   {
     img: "/CaramelRibbonCrunchCremeFrappuccino.jpg",
     name: "Frappuccino Blended Beverage",
+    link: "frappuccino",
     id: 7,
   },
   {
     img: "/HotChocolate.jpg",
     name: "Hot Chocolate, Lemonade & More",
+    link: "other",
     id: 8,
   },
   {
     img: "/EvolutionFreshOrganicDefenseUp.jpg",
     name: "Bottled Beverages",
+    link: "bottled",
     id: 9,
   },
 ];
