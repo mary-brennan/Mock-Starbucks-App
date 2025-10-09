@@ -15,53 +15,68 @@ const SideBar = () => {
             </Link>
           </li>
           <li className="my-3 hover:text-black">
-            <a href="/menu/drinks/hot-coffee" className="flex justify-between">
+            <Link
+              href="/menu/drinks/hot-coffee"
+              className="flex justify-between"
+            >
               Hot Coffee
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
-            <a href="/menu/drinks/cold-coffee" className="flex justify-between">
+            <Link
+              href="/menu/drinks/cold-coffee"
+              className="flex justify-between"
+            >
               Cold Coffee
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
-            <a href="/menu/drinks/hot-tea" className="  flex justify-between">
+            <Link
+              href="/menu/drinks/hot-tea"
+              className="  flex justify-between"
+            >
               Hot Tea
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
-            <a href="/menu/drinks/cold-tea" className="  flex justify-between">
+            <Link
+              href="/menu/drinks/cold-tea"
+              className="  flex justify-between"
+            >
               Cold Tea
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
-            <a href="/menu/drinks/refreshers" className="flex justify-between">
+            <Link
+              href="/menu/drinks/refreshers"
+              className="flex justify-between"
+            >
               Refreshers
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
-            <a
+            <Link
               href="/menu/drinks/frappuccino-blended-beverage"
               className="flex justify-between"
             >
               Frappuccino® Blended Beverage
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
-            <a
+            <Link
               href="/menu/drinks/hot-chocolate-lemonade-more"
               className="flex justify-between"
             >
               Hot Chocolate, Lemonade & More
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
-            <a
+            <Link
               href="/menu/drinks/bottled-beverages"
               className="flex justify-between"
             >
               Bottled Beverages
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -71,27 +86,27 @@ const SideBar = () => {
           <li className="my-3 hover:text-black">
             <a href="/menu/food/breakfast" className="flex justify-between">
               Breakfast
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
             <a href="/menu/food/bakery" className="flex justify-between">
               Bakery
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
             <a href="/menu/food/treats" className="flex justify-between">
               Treats
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
             <a href="/menu/food/lunch" className="flex justify-between">
               Lunch
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
             <a href="/menu/food/snacks" className="flex justify-between">
               Snacks
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -104,7 +119,7 @@ const SideBar = () => {
               className="flex justify-between"
             >
               Whole Bean
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
             <a
@@ -112,7 +127,7 @@ const SideBar = () => {
               className="flex justify-between"
             >
               Grounded
-            </a>
+            </Link>
           </li>
           <li className="my-3 hover:text-black">
             <a
@@ -120,7 +135,7 @@ const SideBar = () => {
               className="flex justify-between"
             >
               Machines
-            </a>
+            </Link>
           </li>
         </ul>
       </nav> */}
