@@ -1,6 +1,7 @@
 export type MainDrink = {
   img: string;
   name: string;
+  link: string;
   id: number;
 };
 export type Option = {
@@ -16,7 +17,12 @@ export type Drink = {
 };
 
 export const MainDrinks: MainDrink[] = [
-  { img: "/IcedVanillaProteinLatte.jpg", name: "Protein Beverages", id: 1 },
+  {
+    img: "/IcedVanillaProteinLatte.jpg",
+    name: "Protein Beverages",
+    link: "proteinBev",
+    id: 1,
+  },
   {
     img: "/CaffeLatte.jpg",
     name: "Hot Coffee",

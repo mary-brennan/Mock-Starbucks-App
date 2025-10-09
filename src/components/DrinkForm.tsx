@@ -28,7 +28,6 @@ const DrinkForm = () => {
   const FormSchema = z.object({
     size: z.string().optional(),
     milk: z.string().optional(),
-    flavors: z.number().optional(),
     shotOptions: z.string().optional(),
     shotNumber: z.number().min(0).max(8),
     sweetener: z.string().optional(),
@@ -46,13 +45,12 @@ const DrinkForm = () => {
     const formattedData = `
 Order Details:
 ━━━━━━━━━━━━━━━━━━━━
-Size: ${data.size || 'Not selected'}
-Milk: ${data.milk || 'Not selected'}
-Flavors: ${data.flavors || 0}
-Shot Options: ${data.shotOptions || 'Not selected'}
+Size: ${data.size || "Not selected"}
+Milk: ${data.milk || "Not selected"}
+Shot Options: ${data.shotOptions || "Not selected"}
 Shot Count: ${data.shotNumber}
-Sweetener: ${data.sweetener || 'Not selected'}
-Add-Ins: ${data.addIns || 'Not selected'}
+Sweetener: ${data.sweetener || "Not selected"}
+Add-Ins: ${data.addIns || "Not selected"}
 ━━━━━━━━━━━━━━━━━━━━
     `;
     alert(formattedData);
