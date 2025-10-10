@@ -9,12 +9,6 @@ export type Option = {
   name: string;
   drinks: Drink[];
 };
-export type Drink = {
-  img: string;
-  imgFull: string;
-  name: string;
-  id: number;
-};
 
 export const MainDrinks: MainDrink[] = [
   {
@@ -72,6 +66,36 @@ export const MainDrinks: MainDrink[] = [
     id: 9,
   },
 ];
+export type Drink = {
+  img: string;
+  imgFull: string;
+  name: string;
+  id: number;
+  sm: {
+    calories: number;
+    milk: string;
+    sweetener: string;
+    shotOption: string;
+    shots: number;
+    addIns: string;
+  };
+  md: {
+    calories: number;
+    milk: string;
+    sweetener: string;
+    shotOption: string;
+    shots: number;
+    addIns: string;
+  };
+  lg: {
+    calories: number;
+    milk: string;
+    sweetener: string;
+    shotOption: string;
+    shots: number;
+    addIns: string;
+  };
+};
 
 export const Drinks = {
   proteinBev: {
@@ -82,14 +106,14 @@ export const Drinks = {
         name: "High Protein Lattes",
         drinks: [
           {
-            img: "/pDrinks/IcedVanillaProteinLatte.jpg",
+            img: "/pDrinks/IcedCaffeLattewProtein.jpg",
             imgFull: "/pDrinks/IcedCaffeLattewProteinFull.jpg",
             name: "Iced Vanilla Protein Latte",
             id: 1,
             sm: {
               calories: 210,
               milk: "Protein-boosted Milk",
-              VSpumps: 3,
+              sweetener: "Vanilla Syrup",
               shots: 1,
               shotOption: "Signature Espresso",
               addIns: "Ice",
@@ -97,7 +121,7 @@ export const Drinks = {
             md: {
               calories: 270,
               milk: "Protein-boosted Milk",
-              VSpumps: 4,
+              sweetener: "Vanilla Syrup",
               shots: 2,
               shotOption: "Signature Espresso",
               addIns: "Ice",
@@ -105,29 +129,101 @@ export const Drinks = {
             lg: {
               calories: 390,
               milk: "Protein-boosted Milk",
-              VSpumps: 6,
+              sweetener: "Vanilla Syrup",
               shots: 3,
               shotOption: "Signature Espresso",
               addIns: "Ice",
             },
           },
           {
-            img: "/pDrinks/ProteinMatchaTeaLatte.jpg",
-            imgFull: "/pDrinks/IcedCaffeLattewProteinFull.jpg",
+            img: "/pDrinks/IcedMatchaTeaLatte.jpg",
+            imgFull: "/pDrinks/IcedMatchaTeaLattewProteinFull.jpg",
             name: "Iced Protein Matcha",
             id: 2,
+            sm: {
+              calories: 220,
+              milk: "Protein-boosted Milk",
+              sweetener: "Classic Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "Ice",
+            },
+            md: {
+              calories: 300,
+              milk: "Protein-boosted Milk",
+              sweetener: "Classic Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "Ice",
+            },
+            lg: {
+              calories: 430,
+              milk: "Protein-boosted Milk",
+              sweetener: "Classic Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "Ice",
+            },
           },
           {
             img: "/pDrinks/CaffeLatte.jpg",
-            imgFull: "/pDrinks/IcedCaffeLattewProteinFull.jpg",
+            imgFull: "/pDrinks/CaffeLattewProteinFull.jpg",
             name: "Vanilla Protein Latte",
             id: 3,
+            sm: {
+              calories: 240,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Syrup",
+              shots: 1,
+              shotOption: "Signature Espresso",
+              addIns: "No Ice",
+            },
+            md: {
+              calories: 310,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Syrup",
+              shots: 2,
+              shotOption: "Signature Espresso",
+              addIns: "No Ice",
+            },
+            lg: {
+              calories: 360,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Syrup",
+              shots: 2,
+              shotOption: "Signature Espresso",
+              addIns: "No Ice",
+            },
           },
           {
             img: "/pDrinks/ProteinMatchaTeaLatte.jpg",
-            imgFull: "/pDrinks/IcedCaffeLattewProteinFull.jpg",
+            imgFull: "/pDrinks/ProteinMatchaTeaLatteFull.jpg",
             name: "Protein Matcha",
             id: 4,
+            sm: {
+              calories: 220,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "No Ice",
+            },
+            md: {
+              calories: 300,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "No Ice",
+            },
+            lg: {
+              calories: 370,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "No Ice",
+            },
           },
         ],
       },
@@ -136,28 +232,124 @@ export const Drinks = {
         name: "No added Sugar Options",
         drinks: [
           {
-            img: "/pDrinks/IcedVanillaProteinLatte.jpg",
+            img: "/pDrinks/IcedCaffeLattewProtein.jpg",
             imgFull: "/pDrinks/IcedCaffeLattewProteinFull.jpg",
             name: "Iced Sugar-Free Vanilla Protein Latte",
             id: 1,
+            sm: {
+              calories: 210,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Sugar-Free Syrup",
+              shots: 1,
+              shotOption: "Signature Espresso",
+              addIns: "Ice",
+            },
+            md: {
+              calories: 270,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Sugar-Free Syrup",
+              shots: 2,
+              shotOption: "Signature Espresso",
+              addIns: "Ice",
+            },
+            lg: {
+              calories: 390,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Sugar-Free Syrup",
+              shots: 3,
+              shotOption: "Signature Espresso",
+              addIns: "Ice",
+            },
           },
           {
             img: "/pDrinks/IcedMatchaTeaLatte.jpg",
-            imgFull: "/pDrinks/IcedCaffeLattewProteinFull.jpg",
+            imgFull: "/pDrinks/IcedMatchaTeaLattewProteinFull.jpg",
             name: "Iced Sugar-Free Vanilla Protein Matcha",
             id: 2,
+            sm: {
+              calories: 220,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Sugar-Free Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "Ice",
+            },
+            md: {
+              calories: 300,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Sugar-Free Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "Ice",
+            },
+            lg: {
+              calories: 430,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Sugar-Free Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "Ice",
+            },
           },
           {
             img: "/pDrinks/CaffeLatte.jpg",
-            imgFull: "/pDrinks/IcedCaffeLattewProteinFull.jpg",
+            imgFull: "/pDrinks/CaffeLattewProteinFull.jpg",
             name: "Sugar-Free Vanilla Protein Latte",
             id: 3,
+            sm: {
+              calories: 240,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Sugar-Free Syrup",
+              shots: 1,
+              shotOption: "Signature Espresso",
+              addIns: "No Ice",
+            },
+            md: {
+              calories: 310,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Sugar-Free Syrup",
+              shots: 2,
+              shotOption: "Signature Espresso",
+              addIns: "No Ice",
+            },
+            lg: {
+              calories: 360,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Sugar-Free Syrup",
+              shots: 2,
+              shotOption: "Signature Espresso",
+              addIns: "No Ice",
+            },
           },
           {
             img: "/pDrinks/ProteinMatchaTeaLatte.jpg",
-            imgFull: "/pDrinks/IcedCaffeLattewProteinFull.jpg",
+            imgFull: "/pDrinks/ProteinMatchaTeaLatteFull.jpg",
             name: "Sugar-Free Vanilla Protein Matcha",
             id: 4,
+            sm: {
+              calories: 220,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Sugar-Free Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "No Ice",
+            },
+            md: {
+              calories: 300,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Sugar-Free Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "No Ice",
+            },
+            lg: {
+              calories: 370,
+              milk: "Protein-boosted Milk",
+              sweetener: "Vanilla Sugar-Free Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "No Ice",
+            },
           },
         ],
       },
@@ -166,22 +358,94 @@ export const Drinks = {
         name: "Protein Cold Foam Drinks",
         drinks: [
           {
-            img: "/pDrinks/IcedCaffeLattewProtein.jpg",
-            imgFull: "/pDrinks/IcedCaffeLattewProteinFull.jpg",
+            img: "/pDrinks/IcedVanillaCreamProteinLatte.jpg",
+            imgFull: "/pDrinks/IcedVanillaCreamProteinLatteFull.jpg",
             name: "Iced Vanilla Cream Protein Latte",
             id: 1,
+            sm: {
+              calories: 250,
+              milk: "2% Milk",
+              sweetener: "Vanilla Syrup",
+              shots: 1,
+              shotOption: "Signature Espresso",
+              addIns: "Ice",
+            },
+            md: {
+              calories: 330,
+              milk: "2% Milk",
+              sweetener: "Vanilla Syrup",
+              shots: 2,
+              shotOption: "Signature Espresso",
+              addIns: "Ice",
+            },
+            lg: {
+              calories: 460,
+              milk: "2% Milk",
+              sweetener: "Vanilla Syrup",
+              shots: 3,
+              shotOption: "Signature Espresso",
+              addIns: "Ice",
+            },
           },
           {
             img: "/pDrinks/IcedBananaProteinMatcha.jpg",
-            imgFull: "/pDrinks/IcedCaffeLattewProteinFull.jpg",
+            imgFull: "/pDrinks/IcedBananaProteinMatchaFull.jpg",
             name: "Iced Banana Cream Protein Matcha",
             id: 2,
+            sm: {
+              calories: 250,
+              milk: "2% Milk",
+              sweetener: "Classic Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "Ice",
+            },
+            md: {
+              calories: 340,
+              milk: "2% Milk",
+              sweetener: "Classic Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "Ice",
+            },
+            lg: {
+              calories: 480,
+              milk: "2% Milk",
+              sweetener: "Classic Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "Ice",
+            },
           },
           {
             img: "/pDrinks/ChocolateProteinColdBrew.jpg",
-            imgFull: "/pDrinks/IcedCaffeLattewProteinFull.jpg",
+            imgFull: "/pDrinks/ChocolateProteinColdBrewFull.jpg",
             name: "Chocolate Cream Protein Cold Brew",
             id: 3,
+            sm: {
+              calories: 230,
+              milk: "Protein-boosted Milk",
+              sweetener: "Classic Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "Ice",
+            },
+            md: {
+              calories: 310,
+              milk: "Protein-boosted Milk",
+              sweetener: "Classic Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "Ice",
+            },
+            lg: {
+              calories: 440,
+              milk: "Protein-boosted Milk",
+              sweetener: "Classic Syrup",
+              shots: 0,
+              shotOption: "None",
+              addIns: "Ice",
+            },
           },
         ],
       },

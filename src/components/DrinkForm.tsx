@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Coffee } from "lucide-react";
-
+import { Drink } from "@/app/_data/Drinks";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -24,7 +24,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const DrinkForm = () => {
+const DrinkForm = ({ size, drink }: { size: string; drink?: Drink }) => {
+  const [calories, setCalories] = useState(drink?.md.calories || 0);
+
   const FormSchema = z.object({
     size: z.string().optional(),
     milk: z.string().optional(),
@@ -37,9 +39,34 @@ const DrinkForm = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      shotNumber: 0,
+      size: size,
+      milk: drink?.md.milk,
+      shotNumber: drink?.md.shots,
+      shotOptions: drink?.md.shotOption,
+      sweetener: drink?.md.sweetener,
+      addIns: drink?.md.addIns,
     },
   });
+
+  const updateFormForSize = (selectedSize: "small" | "medium" | "large") => {
+    if (!drink) return;
+
+    const sizeMap = {
+      small: drink.sm,
+      medium: drink.md,
+      large: drink.lg,
+    };
+
+    const sizeData = sizeMap[selectedSize];
+
+    form.setValue("size", selectedSize);
+    form.setValue("milk", sizeData.milk);
+    form.setValue("shotNumber", sizeData.shots);
+    form.setValue("shotOptions", sizeData.shotOption);
+    form.setValue("sweetener", sizeData.sweetener);
+    form.setValue("addIns", sizeData.addIns);
+    setCalories(sizeData.calories);
+  };
 
   const onSubmit = (data: z.infer<typeof FormSchema>) => {
     const formattedData = `
@@ -61,7 +88,7 @@ Add-Ins: ${data.addIns || "Not selected"}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="md:flex pb-10 xs:flex-col">
-            <div className="flex-grow md:max-w-1/4 border-red-800 border-1 md:mr-[88px]">
+            <div className="flex-grow md:max-w-1/4 md:mr-[88px]">
               <h1 className="text-2xl ml-2 border-b-4 pb-3">Choose a Size</h1>
               <FormField
                 control={form.control}
@@ -72,12 +99,12 @@ Add-Ins: ${data.addIns || "Not selected"}
                       <div className="flex items-end justify-evenly">
                         <Button
                           type="button"
-                          className={`p-2 bg- hover:bg-green-50 hover:border-green-600 text-black rounded-lg h-auto ${
+                          className={`p-2 bg-transparent hover:bg-green-50 hover:border-green-600 text-black rounded-lg h-auto ${
                             field.value === "small"
                               ? "border-2 border-green-600 bg-green-50"
                               : "border-2 border-transparent"
                           }`}
-                          onClick={() => field.onChange("small")}
+                          onClick={() => updateFormForSize("small")}
                         >
                           <div className="flex flex-col items-center gap-2">
                             <div className="rounded-full p-2 border-2">
@@ -89,12 +116,12 @@ Add-Ins: ${data.addIns || "Not selected"}
                         </Button>
                         <Button
                           type="button"
-                          className={`p-2 bg- hover:bg-green-50 hover:border-green-600 text-black rounded-lg h-auto ${
+                          className={`p-2 bg-transparent hover:bg-green-50 hover:border-green-600 text-black rounded-lg h-auto ${
                             field.value === "medium"
                               ? "border-2 border-green-600 bg-green-50"
                               : "border-2 border-transparent"
                           }`}
-                          onClick={() => field.onChange("medium")}
+                          onClick={() => updateFormForSize("medium")}
                         >
                           <div className="flex flex-col items-center gap-2">
                             <div className="rounded-full p-2 border-2">
@@ -106,12 +133,12 @@ Add-Ins: ${data.addIns || "Not selected"}
                         </Button>
                         <Button
                           type="button"
-                          className={`p-2 bg- hover:bg-green-50 hover:border-green-600 text-black rounded-lg h-auto ${
+                          className={`p-2 hover:bg-green-50 bg-transparent hover:border-green-600 text-black rounded-lg h-auto ${
                             field.value === "large"
                               ? "border-2 border-green-600 bg-green-50"
                               : "border-2 border-transparent"
                           }`}
-                          onClick={() => field.onChange("large")}
+                          onClick={() => updateFormForSize("large")}
                         >
                           <div className="flex flex-col items-center gap-2">
                             <div className="rounded-full p-2 border-2">
@@ -129,7 +156,7 @@ Add-Ins: ${data.addIns || "Not selected"}
             </div>
             <div className="flex-grow md:max-w-1/4  md:ml-[88px]">
               <h1 className="text-2xl ml-2 border-b-4  pb-3">
-                What&apos;s Included
+                What&apos;s Included ({calories} Cal)
               </h1>
               <FormField
                 control={form.control}
@@ -149,6 +176,9 @@ Add-Ins: ${data.addIns || "Not selected"}
                       <SelectContent className="text-lg">
                         <SelectItem className="text-lg" value="2% Milk">
                           2% Milk
+                        </SelectItem>
+                        <SelectItem value="Protein-boosted Milk">
+                          Protein-boosted Milk
                         </SelectItem>
                         <SelectItem value="Almond">Almond</SelectItem>
                         <SelectItem value="Coconut">Coconut</SelectItem>
@@ -189,6 +219,7 @@ Add-Ins: ${data.addIns || "Not selected"}
                         <SelectItem value="Decaf Espresso">
                           Decaf Espresso
                         </SelectItem>
+                        <SelectItem value="None">None</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormItem>
@@ -266,8 +297,11 @@ Add-Ins: ${data.addIns || "Not selected"}
                         <SelectItem value="Classic Syrup">
                           Classic Syrup
                         </SelectItem>
-                        <SelectItem value="Vanilla-Free Syrup">
-                          Vanilla-Free Syrup
+                        <SelectItem value="Vanilla Sugar-Free Syrup">
+                          Vanilla Sugar-Free Syrup
+                        </SelectItem>
+                        <SelectItem value="Vanilla Syrup">
+                          Vanilla Syrup
                         </SelectItem>
                       </SelectContent>
                     </Select>
@@ -291,8 +325,8 @@ Add-Ins: ${data.addIns || "Not selected"}
                       </FormControl>
                       <SelectContent>
                         <SelectItem value="No Ice">No Ice</SelectItem>
-                        <SelectItem value="Almond">Ice</SelectItem>
-                        <SelectItem value="Coconut">Extra-Ice</SelectItem>
+                        <SelectItem value="Ice">Ice</SelectItem>
+                        <SelectItem value="Extra-Ice">Extra-Ice</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormItem>

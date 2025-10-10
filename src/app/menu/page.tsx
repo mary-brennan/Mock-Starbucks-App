@@ -4,7 +4,7 @@ import DrinksLayout from "@/components/DrinksLayout";
 const page = () => {
   return (
     <div className="flex  lg:pl-32  pt-11 text-black bg-gray-50 mb-1">
-      <div className=" max-w-[150px]">
+      <div className="max-w-[150px]">
         <SideBar />
       </div>
       <div className="grow ">

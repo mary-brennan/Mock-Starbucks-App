@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { MapPin, Menu, X } from "lucide-react";
+import { Button } from "./ui/button";
 import Link from "next/link";
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
@@ -14,8 +15,8 @@ const MobileNav = () => {
       </div>
 
       <div
-        className={`lg:hidden  absolute top-full right-0 w-3/4 h-[90vh] bg-white shadow-lg z-50 p-5 transition-transform duration-300 ease-in-out
-          ${open ? "translate-x-0" : "translate-x-full"}
+        className={`lg:hidden  absolute top-full right-0 w-3/4 h-[90vh] bg-white shadow-lg z-50 p-5 transition-opacity duration-300 ease-in-out
+          ${open ? "opacity-100" : "opacity-0 pointer-events-none"}
         `}
       >
         <div className="flex flex-col ">
@@ -32,12 +33,19 @@ const MobileNav = () => {
           </div>
           <div className="flex flex-col gap-4 mt-10 font-semibold">
             <div className="flex gap-5 mb-6">
-              <button className="px-3 py-1 border-black border-1 rounded-2xl">
-                Login
-              </button>
-              <button className="px-3 border-1  bg-black text-white rounded-2xl py-1">
-                Join now
-              </button>
+              <Button
+                asChild
+                variant="outline"
+                className="px-3 py-1 border-black border-1 rounded-2xl"
+              >
+                <Link href={"/account/signin"}>Login</Link>
+              </Button>
+              <Button
+                asChild
+                className="px-3 border-1  bg-black text-white rounded-2xl py-1"
+              >
+                <Link href={"/account/create"}> Join now</Link>
+              </Button>
             </div>
             <div className="flex gap-2 items-center hover:text-green-900">
               <MapPin size={22} color="#000000" strokeWidth={2.25} />
