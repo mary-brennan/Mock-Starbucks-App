@@ -3,6 +3,7 @@
 
 
 @theme inline {
+  --color-sandalwood: var(--custom-brown-color);
   --color-canvas: var(--custom-green-color);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -49,6 +50,7 @@ body {
 }
 
 :root {
+  --custom-brown-color: oklch(27.943% 0.03271 49.978);
   --custom-green-color: oklch(0.3205 0.0356 175.44);
   --radius: 0.625rem;
   --background: oklch(98.5% 0.002 247.839);

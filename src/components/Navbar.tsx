@@ -19,7 +19,9 @@ const Navbar = () => {
 
         <div className=" w-18 h-18 relative rounded-full overflow-hidden">
           {/* image container */}
-          <Image src="/logo.png" alt="" fill />
+          <Link href="/">
+            <Image src="/logo.png" alt="" fill />
+          </Link>
         </div>
         {!isAuthPage && (
           <div className=" hidden font-bold lg:flex items-center gap-5">

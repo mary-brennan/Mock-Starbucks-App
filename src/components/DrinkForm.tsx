@@ -84,12 +84,14 @@ Add-Ins: ${data.addIns || "Not selected"}
   };
 
   return (
-    <div className="pl-32 pr-10 pt-8">
+    <div className="md:pl-32 pr-10 pl-10 pt-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="md:flex pb-10 xs:flex-col">
+          <div className="md:flex pb-10  xs:flex-col">
             <div className="flex-grow md:max-w-1/4 md:mr-[88px]">
-              <h1 className="text-2xl ml-2 border-b-4 pb-3">Choose a Size</h1>
+              <h1 className="text-2xl text-center md:text-start ml-2 border-b-4 pb-3">
+                Choose a Size
+              </h1>
               <FormField
                 control={form.control}
                 name="size"
@@ -168,7 +170,7 @@ Add-Ins: ${data.addIns || "Not selected"}
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
-                      <FormControl className="md:w-4/5 sm:w-5/6  py-6">
+                      <FormControl className="md:w-4/5 w-5/6  py-6">
                         <SelectTrigger className="text-lg !bg-white">
                           <SelectValue placeholder="This will be a default value" />
                         </SelectTrigger>
@@ -204,7 +206,7 @@ Add-Ins: ${data.addIns || "Not selected"}
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
-                      <FormControl className="md:w-4/5 sm:w-5/6 py-6">
+                      <FormControl className="md:w-4/5 w-5/6 py-6">
                         <SelectTrigger className="!bg-white">
                           <SelectValue placeholder="This will be a default value" />
                         </SelectTrigger>
@@ -229,10 +231,10 @@ Add-Ins: ${data.addIns || "Not selected"}
                 control={form.control}
                 name="shotNumber"
                 render={({ field }) => (
-                  <FormItem className="py-4 px-2 ">
+                  <FormItem className="py-4  px-2 ">
                     <FormLabel className="text-sm">Shot Count</FormLabel>
-                    <FormControl className="md:w-4/5 sm:w-5/6 py-6">
-                      <div className="flex justify-between items-center gap-2 !bg-white border rounded-md px-3 py-2 h-9 focus-within:border-green-600 w-fit shadow-xs">
+                    <FormControl className="md:w-4/5 w-5/6 py-6">
+                      <div className="flex justify-between items-center gap-2 !bg-white border rounded-md px-3 py-2 h-9 focus-within:border-green-600  shadow-xs">
                         <div className="text-lg ">Shots</div>
                         <div className="flex items-center gap-1">
                           <Button
@@ -285,7 +287,7 @@ Add-Ins: ${data.addIns || "Not selected"}
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
-                      <FormControl className="md:w-4/5 sm:w-5/6 py-6">
+                      <FormControl className="md:w-4/5 w-5/6 py-6">
                         <SelectTrigger className="!bg-white">
                           <SelectValue placeholder="This will be a default value" />
                         </SelectTrigger>
@@ -318,7 +320,7 @@ Add-Ins: ${data.addIns || "Not selected"}
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
-                      <FormControl className="md:w-4/5 sm:w-5/6 py-6">
+                      <FormControl className="md:w-4/5 w-5/6 py-6">
                         <SelectTrigger className="!bg-white">
                           <SelectValue placeholder="This will be a default value" />
                         </SelectTrigger>

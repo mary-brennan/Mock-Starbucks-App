@@ -1,10 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MapPin, Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <div className="">
