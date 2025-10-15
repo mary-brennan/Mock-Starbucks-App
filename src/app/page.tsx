@@ -1,7 +1,11 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import FeatureCard from "@/components/FeatureCard";
+import FeatureCard from "@/components/FeatureCard1";
+import SlimFeatureCard from "@/components/slimFeatureCard1";
+import SlimFeatureCard2 from "@/components/slimFeatureCard2";
+import FeatureCard2 from "@/components/FeatureCard2";
+import FeatureCard3 from "@/components/FeatureCard3";
 
 export default function Home() {
   return (
@@ -18,6 +22,10 @@ export default function Home() {
         </Button>
       </div>
       <FeatureCard />
+      <SlimFeatureCard />
+      <SlimFeatureCard2 />
+      <FeatureCard2 />
+      <FeatureCard3 />
     </main>
   );
 }
