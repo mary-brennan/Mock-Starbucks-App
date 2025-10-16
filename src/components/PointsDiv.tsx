@@ -35,9 +35,9 @@ const PointsDiv = ({ deets }: { deets: pointDetail[] }) => {
         >
           {deets.map((detail) => (
             <button
-              ref={(el: HTMLButtonElement) =>
-                (buttonsRef.current[detail.id] = el)
-              }
+              ref={(el) => {
+                buttonsRef.current[detail.id] = el;
+              }}
               onClick={() => setId(detail.id)}
               className="px-2 pt-2 pb-4 w-full md:w-[120px] relative"
               key={detail.id}
