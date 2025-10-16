@@ -1,3 +1,4 @@
+import GettingStartedSteps from "@/components/GettingStartedSteps";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -67,6 +68,10 @@ const page = () => {
           </div>
         </div>
       </div>
+      <div className=" lg:pb-2 lg:pt-2">
+        <GettingStartedSteps />
+      </div>
+      <div className="">HELLO</div>
     </div>
   );
 };
