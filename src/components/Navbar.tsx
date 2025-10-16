@@ -25,14 +25,32 @@ const Navbar = () => {
         </div>
         {!isAuthPage && (
           <div className=" hidden font-bold lg:flex items-center gap-5">
-            <div className=" hover:text-green-900">
+            <div
+              className={` md:h-full content-center hover:text-green-900 ${
+                pathname === "/menu"
+                  ? "border-b-5 border-green-800 font-extrabold"
+                  : "border-b-5 border-transparent"
+              }`}
+            >
               <Link href={"/menu"}>MENU</Link>
             </div>
-            <div className=" hover:text-green-900">
-              <Link href={"/menu"}>REWARDS</Link>
+            <div
+              className={` md:h-full content-center hover:text-green-900 ${
+                pathname === "/rewards"
+                  ? "border-b-5 border-green-800  font-extrabold "
+                  : "border-b-5 border-transparent"
+              }`}
+            >
+              <Link href={"/rewards"}>REWARDS</Link>
             </div>
-            <div className=" hover:text-green-900">
-              <Link href={"/menu"}>GIFTS</Link>
+            <div
+              className={` md:h-full content-center hover:text-green-900 ${
+                pathname === "/gifts"
+                  ? "border-b-5 border-green-800  font-extrabold"
+                  : "border-b-5 border-transparent"
+              }`}
+            >
+              <Link href={"/gifts"}>GIFTS</Link>
             </div>
           </div>
         )}
