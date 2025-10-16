@@ -3,6 +3,8 @@
 
 
 @theme inline {
+  --color-lgreen: var(--custom-sage-color);
+  --color-dGreen: var(--custom-dSage-color);
   --color-sandalwood: var(--custom-brown-color);
   --color-canvas: var(--custom-green-color);
   --color-background: var(--background);
@@ -50,6 +52,8 @@ body {
 }
 
 :root {
+  --custom-sage-color: oklch(94.703% 0.01526 171.443 / 0.893);
+  --custom-dSage-color: oklch(94.48% 0.02694 170.507 / 0.881);
   --custom-brown-color: oklch(27.943% 0.03271 49.978);
   --custom-green-color: oklch(0.3205 0.0356 175.44);
   --radius: 0.625rem;

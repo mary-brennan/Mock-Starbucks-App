@@ -1,8 +1,9 @@
 import GettingStartedSteps from "@/components/GettingStartedSteps";
+import PointsDiv from "@/components/PointsDiv";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
+import { pointsArray } from "../_data/Points";
 const page = () => {
   return (
     <div className="-mt-1">
@@ -71,7 +72,9 @@ const page = () => {
       <div className=" lg:pb-2 lg:pt-2">
         <GettingStartedSteps />
       </div>
-      <div className="">HELLO</div>
+      <div className="py-8">
+        <PointsDiv deets={pointsArray} />
+      </div>
     </div>
   );
 };
