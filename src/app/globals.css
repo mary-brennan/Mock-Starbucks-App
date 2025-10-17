@@ -52,8 +52,8 @@ body {
 }
 
 :root {
-  --custom-sage-color: oklch(94.703% 0.01526 171.443 / 0.893);
-  --custom-dSage-color: oklch(94.48% 0.02694 170.507 / 0.881);
+  --custom-sage-color: oklch(93.616% 0.04115 161.035 / 0.893);
+  --custom-dSage-color: oklch(85.596% 0.05751 161.709 / 0.881);
   --custom-brown-color: oklch(27.943% 0.03271 49.978);
   --custom-green-color: oklch(0.3205 0.0356 175.44);
   --radius: 0.625rem;

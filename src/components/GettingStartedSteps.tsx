@@ -48,7 +48,7 @@ const step3: StepType = {
 
 const GettingStartedSteps = () => {
   return (
-    <div className="max-w-[1440px] m-auto px-4 lg:px-10 py-12  lg:pt-4 xl:shadow-xl xl:rounded-3xl">
+    <div className="max-w-[1440px] m-auto px-4 lg:px-10 py-12  lg:mt-15 xl:bg-white xl:shadow-xl xl:rounded-3xl">
       <div className="md:pl-10 text-center max-w-6xl md:mx-auto md:text-start mb-12 md:mb-16">
         <h1 className="text-2xl md:text-3xl font-semibold mb-2">
           Getting started is easy
