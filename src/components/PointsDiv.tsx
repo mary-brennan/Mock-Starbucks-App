@@ -7,6 +7,7 @@ const PointsDiv = ({ deets }: { deets: pointDetail[] }) => {
   const [id, setId] = useState(25);
   const detail = deets.find((d) => d.id === id);
   const [sliderStyle, setSliderStyle] = useState({ left: 0, width: 0 });
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const buttonsRef = useRef<{ [key: number]: HTMLButtonElement | null }>({});
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +41,15 @@ const PointsDiv = ({ deets }: { deets: pointDetail[] }) => {
               ref={(el) => {
                 buttonsRef.current[detail.id] = el;
               }}
-              onClick={() => setId(detail.id)}
+              onClick={() => {
+                if (detail.id !== id) {
+                  setIsTransitioning(true);
+                  setTimeout(() => {
+                    setId(detail.id);
+                    setTimeout(() => setIsTransitioning(false), 50);
+                  }, 300);
+                }
+              }}
               className="px-2 pt-2 pb-4 w-full md:w-[120px] relative"
               key={detail.id}
             >
@@ -61,7 +70,7 @@ const PointsDiv = ({ deets }: { deets: pointDetail[] }) => {
           />
         </div>
         <div className="bg-dGreen">
-          <div className="flex flex-col py-8 px-4 items-center md:flex-row md:justify-center">
+          <div className={`flex flex-col py-8 px-4 items-center md:flex-row md:justify-center transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
             <div className="relative md:flex-grow md:max-w-[375px] py-5 md:py-0 md:mr-12 w-full aspect-[16/9] ">
               <Image src={detail?.image || ""} fill alt="" />
             </div>
