@@ -50,7 +50,7 @@ const Navbar = () => {
                   : "border-b-5 border-transparent"
               }`}
             >
-              <Link href={"/gifts"}>GIFTS</Link>
+              <Link href={"/gift"}>GIFTS</Link>
             </div>
           </div>
         )}

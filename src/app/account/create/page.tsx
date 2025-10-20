@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -12,8 +14,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { supabase } from "@/lib/supabase";
 
 const Page = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+
   const formSchema = z.object({
     firstName: z.string().min(2, "must enter a First Name"),
     lastName: z.string().min(2, "must enter a Last Name"),
@@ -21,8 +28,67 @@ const Page = () => {
     password: z.string().min(8, "must create a password"),
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    alert(JSON.stringify(values));
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Step 1: Create user in Supabase Auth
+      console.log("Attempting to sign up user:", values.email);
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: values.email,
+        password: values.password,
+      });
+
+      console.log("Auth response:", { authData, authError });
+
+      if (authError) {
+        console.error("Auth error details:", authError);
+        throw new Error(`Authentication error: ${authError.message}`);
+      }
+
+      if (!authData.user) {
+        throw new Error("Failed to create user account");
+      }
+
+      // Step 2: Insert user data into your custom table
+      console.log("Attempting to insert user:", {
+        user_id: authData.user.id,
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        password: values.password,
+      });
+
+      const { data: insertData, error: dbError } = await supabase
+        .from("accounts")
+        .insert([
+          {
+            user_id: authData.user.id,
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            password: values.password,
+          },
+        ])
+        .select();
+
+      if (dbError) {
+        console.error("Full database error:", JSON.stringify(dbError, null, 2));
+        throw new Error(
+          `Database error: ${dbError.message} (Code: ${dbError.code})`
+        );
+      }
+
+      console.log("Insert successful:", insertData);
+
+      // Success! Redirect to a success page or login
+      router.push("/account"); // Adjust this to your desired redirect
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -49,6 +115,11 @@ const Page = () => {
         <p className="">
           <span className="text-green-700">* </span>indicates required field
         </p>
+        {error && (
+          <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+            {error}
+          </div>
+        )}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="pt-8">
             <h1 className="text-xl font-semibold">Personal Information</h1>
@@ -122,8 +193,9 @@ const Page = () => {
             <Button
               className="mt-4 px-3 py-2 rounded-full bg-green-800"
               type="submit"
+              disabled={isLoading}
             >
-              Create Account
+              {isLoading ? "Creating Account..." : "Create Account"}
             </Button>
           </form>
         </Form>

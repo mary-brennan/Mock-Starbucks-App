@@ -35,7 +35,7 @@ const MobileNav = () => {
               <Link href={"/rewards"}>REWARDS</Link>
             </div>
             <div className=" hover:text-green-900  pt-1 pb-6">
-              <Link href={"/gifts"}>GIFTS</Link>
+              <Link href={"/gift"}>GIFTS</Link>
             </div>
           </div>
           <div className="flex flex-col gap-4 mt-10 font-semibold">
