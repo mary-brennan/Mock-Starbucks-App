@@ -1,9 +1,10 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { login } from "./actions";
 import {
   Form,
   FormControl,
@@ -14,13 +15,28 @@ import {
 import { Input } from "@/components/ui/input";
 
 const Page = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const formSchema = z.object({
     email: z.email(),
     password: z.string().min(8, "must create a password"),
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    alert(JSON.stringify(values));
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    setError(null);
+
+    const result = await login({
+      email: values.email,
+      password: values.password,
+    });
+
+    if (result?.error) {
+      setError(result.error);
+      setIsLoading(false);
+    }
+    // If successful, redirect() will trigger navigation
   }
 
   const form = useForm<z.infer<typeof formSchema>>({
