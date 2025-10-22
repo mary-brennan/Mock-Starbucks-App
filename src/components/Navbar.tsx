@@ -2,17 +2,22 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 import MobileNav from "./MobileNav";
 import { usePathname } from "next/navigation";
 import { useUser } from "@/hooks/useUser";
+import SignOutButton from "./SignOutButton";
 
 const Navbar = () => {
   const pathname = usePathname();
   const isAuthPage = pathname.includes("/account");
-  const { user, loading, isSignedIn } = useUser();
+  const [pageLoad, setPageLoad] = useState(true);
+  const { user, isSignedIn, profile, loading } = useUser();
+  useEffect(() => {
+    setPageLoad(loading);
+  }, [loading]);
   console.log(user);
   return (
     <div className="  relative flex justify-between items-center text-black bg-gray-50 px-10 py-5 my-1 shadow-md/20">
@@ -58,7 +63,7 @@ const Navbar = () => {
         )}
       </div>
       {!isAuthPage && <MobileNav />}
-      {!isAuthPage && (
+      {!isAuthPage && !pageLoad && (
         <div className="hidden lg:flex gap-10 items-center font-semibold">
           {/* Right container */}
 
@@ -67,14 +72,23 @@ const Navbar = () => {
             <button className="">Find a Store</button>
           </div>
           {isSignedIn ? (
-            <div className="flex gap-3">
+            <div className="flex gap-3 items-center">
+              <div className="font-bold text-green-900">
+                Welcome, {profile?.firstName}
+              </div>
               <Button
                 variant="outline"
                 asChild
-                className="px-3 py-2 border-black border-1 rounded-2xl font-semibold"
+                className="px-3 hover:bg-green-900 py-2 border-green-900 border-1 rounded-2xl font-semibold"
               >
-                <Link href="/account/signin">View Cart</Link>
+                <Link
+                  className="text-green-900 hover:text-white"
+                  href="/account/signin"
+                >
+                  View Cart
+                </Link>
               </Button>
+              <SignOutButton />
             </div>
           ) : (
             <div className="flex gap-3">

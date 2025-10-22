@@ -35,8 +35,10 @@ const Page = () => {
     if (result?.error) {
       setError(result.error);
       setIsLoading(false);
+    } else if (result?.success) {
+      // Use full page reload to ensure auth state syncs
+      window.location.href = "/";
     }
-    // If successful, redirect() will trigger navigation
   }
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -57,6 +59,7 @@ const Page = () => {
       <div className="self-center w-full md:w-2/3  xl:w-1/3 p-14 rounded-2xl md:shadow-[0_1px_10px_0_#0000001a,0_4px_5px_0_#0000000f,0_2px_4px_0_#00000012] ">
         <p className="">
           <span className="text-green-700">* </span>indicates required field
+          {error ? <p className="text-destructive">{error}</p> : ""}
         </p>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="pt-8">

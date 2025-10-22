@@ -23,7 +23,9 @@ const Page = () => {
     firstName: z.string().min(2, "must enter a First Name"),
     lastName: z.string().min(2, "must enter a Last Name"),
     email: z.email(),
-    password: z.string().min(8, "must create a password with at least 8 characters"),
+    password: z
+      .string()
+      .min(8, "must create a password with at least 8 characters"),
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
