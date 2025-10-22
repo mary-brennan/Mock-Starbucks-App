@@ -13,8 +13,8 @@ import SignOutButton from "./SignOutButton";
 const Navbar = () => {
   const pathname = usePathname();
   const isAuthPage = pathname.includes("/account");
-  const { user, isSignedIn, profile, loading } = useUser();
-  console.log(user);
+  const { isSignedIn, profile, loading } = useUser();
+
   return (
     <div className="  relative flex justify-between items-center text-black bg-gray-50 px-10 py-5 my-1 shadow-md/20">
       <div className="flex gap-5 ">
