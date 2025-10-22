@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 import MobileNav from "./MobileNav";
@@ -13,11 +13,7 @@ import SignOutButton from "./SignOutButton";
 const Navbar = () => {
   const pathname = usePathname();
   const isAuthPage = pathname.includes("/account");
-  const [pageLoad, setPageLoad] = useState(true);
   const { user, isSignedIn, profile, loading } = useUser();
-  useEffect(() => {
-    setPageLoad(loading);
-  }, [loading]);
   console.log(user);
   return (
     <div className="  relative flex justify-between items-center text-black bg-gray-50 px-10 py-5 my-1 shadow-md/20">
@@ -63,7 +59,7 @@ const Navbar = () => {
         )}
       </div>
       {!isAuthPage && <MobileNav />}
-      {!isAuthPage && !pageLoad && (
+      {!isAuthPage && !loading && (
         <div className="hidden lg:flex gap-10 items-center font-semibold">
           {/* Right container */}
 
