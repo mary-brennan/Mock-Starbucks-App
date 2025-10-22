@@ -1,7 +1,7 @@
 import React from "react";
 
 const page = () => {
-  return <div>This is the account page </div>;
+  return <div>Confirmation Email Sent!</div>;
 };
 
 export default page;

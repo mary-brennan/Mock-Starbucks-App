@@ -7,11 +7,13 @@ import { MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 import MobileNav from "./MobileNav";
 import { usePathname } from "next/navigation";
+import { useUser } from "@/hooks/useUser";
 
 const Navbar = () => {
   const pathname = usePathname();
   const isAuthPage = pathname.includes("/account");
-
+  const { user, loading, isSignedIn } = useUser();
+  console.log(user);
   return (
     <div className="  relative flex justify-between items-center text-black bg-gray-50 px-10 py-5 my-1 shadow-md/20">
       <div className="flex gap-5 ">
@@ -64,21 +66,33 @@ const Navbar = () => {
             <MapPin size={22} color="#000000" strokeWidth={2.25} />
             <button className="">Find a Store</button>
           </div>
-          <div className="flex gap-3">
-            <Button
-              variant="outline"
-              asChild
-              className="px-3 py-2 border-black border-1 rounded-2xl font-semibold"
-            >
-              <Link href="/account/signin">Login</Link>
-            </Button>
-            <Button
-              asChild
-              className="px-3 border-1  bg-black text-white rounded-2xl py-2"
-            >
-              <Link href="/account/create">Join now</Link>
-            </Button>
-          </div>
+          {isSignedIn ? (
+            <div className="flex gap-3">
+              <Button
+                variant="outline"
+                asChild
+                className="px-3 py-2 border-black border-1 rounded-2xl font-semibold"
+              >
+                <Link href="/account/signin">View Cart</Link>
+              </Button>
+            </div>
+          ) : (
+            <div className="flex gap-3">
+              <Button
+                variant="outline"
+                asChild
+                className="px-3 py-2 border-black border-1 rounded-2xl font-semibold"
+              >
+                <Link href="/account/signin">Login</Link>
+              </Button>
+              <Button
+                asChild
+                className="px-3 border-1  bg-black text-white rounded-2xl py-2"
+              >
+                <Link href="/account/create">Join now</Link>
+              </Button>
+            </div>
+          )}
         </div>
       )}
     </div>
