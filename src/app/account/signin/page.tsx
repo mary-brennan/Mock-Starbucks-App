@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { login } from "./actions";
 import {
@@ -17,6 +18,7 @@ import { Input } from "@/components/ui/input";
 const Page = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   const formSchema = z.object({
     email: z.email(),
@@ -36,8 +38,10 @@ const Page = () => {
       setError(result.error);
       setIsLoading(false);
     } else if (result?.success) {
-      // Use full page reload to ensure auth state syncs
-      window.location.href = "/";
+      // Refresh the router to get the new auth state
+      router.refresh();
+      // Navigate to home page
+      router.push("/");
     }
   }
 

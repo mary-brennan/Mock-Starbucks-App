@@ -4,6 +4,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -18,6 +19,7 @@ import { signup } from "./actions";
 const Page = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   const formSchema = z.object({
     firstName: z.string().min(2, "must enter a First Name"),
@@ -42,8 +44,12 @@ const Page = () => {
     if (result?.error) {
       setError(result.error);
       setIsLoading(false);
+    } else if (result?.success) {
+      // Refresh the router to get the new auth state
+      router.refresh();
+      // Navigate to account page
+      router.push("/account");
     }
-    // If successful, redirect() will trigger navigation
   }
 
   const form = useForm<z.infer<typeof formSchema>>({
