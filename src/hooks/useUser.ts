@@ -34,35 +34,12 @@ export function useUser() {
 
         setProfile(profileData);
       }
-
       setLoading(false);
     };
 
     getUserAndProfile();
 
     // Listen for auth state changes
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      setUser(session?.user ?? null);
-
-      if (session?.user) {
-        // Fetch profile when user signs in
-        const { data: profileData } = await supabase
-          .from("accounts")
-          .select("firstName, lastName, email")
-          .eq("user_id", session.user.id)
-          .single();
-
-        setProfile(profileData);
-      } else {
-        setProfile(null);
-      }
-
-      setLoading(false);
-    });
-
-    return () => subscription.unsubscribe();
   }, []);
 
   return { user, profile, loading, isSignedIn: !!user };

@@ -59,7 +59,7 @@ const Navbar = () => {
         )}
       </div>
       {!isAuthPage && <MobileNav />}
-      {!isAuthPage && (
+      {!isAuthPage && !loading && (
         <div className="hidden lg:flex gap-10 items-center font-semibold">
           {/* Right container */}
 
