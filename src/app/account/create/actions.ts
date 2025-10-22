@@ -2,6 +2,7 @@
 
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function signup(formData: {
   email: string;
@@ -41,5 +42,5 @@ export async function signup(formData: {
   }
 
   revalidatePath("/", "layout");
-  return { success: true };
+  redirect("/account");
 }

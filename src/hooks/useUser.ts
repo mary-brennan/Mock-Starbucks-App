@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import type { User } from "@supabase/supabase-js";
 
@@ -14,31 +13,26 @@ export function useUser() {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
-  const pathname = usePathname();
 
   const supabase = createClient();
 
   useEffect(() => {
     // Get initial user and profile
     const getUserAndProfile = async () => {
-      // Use getSession() instead of getUser() to check cookies
       const {
-        data: { session },
-      } = await supabase.auth.getSession();
+        data: { user },
+      } = await supabase.auth.getUser();
+      setUser(user);
 
-      setUser(session?.user ?? null);
-
-      if (session?.user) {
+      if (user) {
         // Fetch user profile from accounts table
         const { data: profileData } = await supabase
           .from("accounts")
           .select("firstName, lastName, email")
-          .eq("user_id", session.user.id)
+          .eq("user_id", user.id)
           .single();
 
         setProfile(profileData);
-      } else {
-        setProfile(null);
       }
 
       setLoading(false);
@@ -69,7 +63,7 @@ export function useUser() {
     });
 
     return () => subscription.unsubscribe();
-  }, [pathname]); // Re-run when pathname changes
+  }, []);
 
   return { user, profile, loading, isSignedIn: !!user };
 }
